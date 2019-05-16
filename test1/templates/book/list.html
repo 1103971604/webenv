@@ -10,7 +10,10 @@
 
     {% if books %}
         {% for book in books %}
-        <li><a href="/book/detil/{{ book.id }}/">{{ book.title }}</a></li>
+        <li><a href="{% url 'booktest:detil' book.id %}">{{ book.title }}</a> <a href="{% url 'booktest:delbook' book.id %}">删除</a>
+            <a href="{% url 'booktest:setbook' book.id %}">修改</a>
+
+        </li>
         {% empty %}
             没有书籍信息
         {% endfor %}
@@ -18,8 +21,15 @@
         没有书
     {% endif %}
 
-
     <br>
-    <a href="/book/index/">返回首页</a>
+    <a href="{% url 'booktest:addbook' %}">添加一本书</a>
+    <a href="{% url 'booktest:index' %}">返回首页</a>
 </body>
 </html>
+
+
+
+
+
+
+

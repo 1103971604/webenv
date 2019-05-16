@@ -20,7 +20,7 @@ from django.conf.urls import url,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('book/',include('book.urls'))
+    url('book/',include('book.urls',namespace='booktest'))
 ]
 
 

@@ -11,7 +11,11 @@
         {{ book.title }}
         <ul>
             {% for hero in book.heroinfo_set.all %}
-                <li>{{ hero.heroname }}</li>
+                <li>{{ hero.heroname }} <a href="{% url 'booktest:deldetil' hero.id %}">删除</a>
+                    <a href="{% url 'booktest:setdetil' hero.id %}">修改</a>
+
+
+                </li>
             {% empty %}
                 英雄为空
             {% endfor %}
@@ -20,9 +24,11 @@
         没有英雄
     {% endif %}
     <br>
-    <a href="/book/list/">返回列表</a>
+    <a href="{% url 'booktest:adddetil' book.id %}">添加一个角色</a>
     <br>
-    <a href="/book/index/">返回首页</a>
+    <a href="{% url 'booktest:list' %}">返回列表</a>
+    <br>
+    <a href="{% url 'booktest:index' %}">返回首页</a>
 
 </body>
 </html>

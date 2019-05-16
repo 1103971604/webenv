@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加英雄</title>
+</head>
+<body>
+    <h1>添加英雄</h1>
+    <form action="{% url 'booktest:adddetil' bookid %}" method="post">
+        角色名字: <input type="text" name="name">
+        年龄: <input type="number" name="age" min="0">
+        性别: <input type="radio" name="sex" value="1" checked>男
+            <input type="radio" name="sex" value="2">女
+        <input type="submit" value="提交">
+    </form>
+
+</body>
+</html>

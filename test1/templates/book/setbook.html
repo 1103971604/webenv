@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改书名</title>
+</head>
+<body>
+    <h1>修改书名</h1>
+
+    <form action="{% url 'booktest:setbook' bookid %}" method="post">
+        书名: <input type="text" name="newname" >
+        <input type="submit" value="提交">
+
+
+
+
+    </form>
+
+
+
+</body>
+</html>
