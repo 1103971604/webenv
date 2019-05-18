@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择</title>
+</head>
+<body>
+    <h1>投票内容: <span style="color:red">{{title.title}}</span></h1>
+    <br>
+    <form action="{% url 'votetest:choice' title.id %}" method="post">
+        {% for i in title.listcount_set.all %}
+        <input type="radio" name="choice" value="{{i}}">{{i.choice}}
+        <br>
+        {% empty %}
+            空
+        {% endfor %}
+        <input type="submit" value="提交">
+    </form>
+
+</body>
+</html>

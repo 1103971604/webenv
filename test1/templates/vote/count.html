@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计数</title>
+</head>
+<body>
+    <h1>展示票数</h1>
+
+    <ul>
+        {% for i in tit.listcount_set.all %}
+            <li>{{i.choice}}----{{i.num}}</li>
+        {% empty %}
+            <li>还没有人投票</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'votetest:index' %}">返回首页</a>
+</body>
+</html>

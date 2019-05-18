@@ -7,7 +7,6 @@
 <body>
     <h1>列表页</h1>
 
-
     {% if books %}
         {% for book in books %}
         <li><a href="{% url 'booktest:detil' book.id %}">{{ book.title }}</a> <a href="{% url 'booktest:delbook' book.id %}">删除</a>

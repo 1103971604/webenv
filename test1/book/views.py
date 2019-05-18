@@ -50,13 +50,10 @@ def addbook(request):
         b1.save()
         return HttpResponseRedirect('/book/list/')
 
-
-
 def adddetil(request,bookid):
     if request.method=='GET':
         return render(request,'book/addhero.html', {'bookid':bookid})
     elif request.method=='POST':
-
         book=bookinfo.objects.get(pk=bookid)
         h1=heroinfo()
         h1.heroname=request.POST['name']
@@ -64,11 +61,7 @@ def adddetil(request,bookid):
         h1.hgender = request.POST['sex']
         h1.nbook=book
         h1.save()
-
         return HttpResponseRedirect('/book/detil/%s/'%(bookid,))
-
-
-
 
 def setbook(request,id):
     if request.method=='GET':

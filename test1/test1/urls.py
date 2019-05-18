@@ -20,7 +20,9 @@ from django.conf.urls import url,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('book/',include('book.urls',namespace='booktest'))
+    url('book/',include('book.urls',namespace='booktest')),
+    # namespace 解除硬编码 作用
+    url('vote/',include('vote.urls',namespace='votetest')),
 ]
 
 

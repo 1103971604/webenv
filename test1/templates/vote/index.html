@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票</title>
+</head>
+<body>
+    <h1>投票通道</h1>
+
+    <ul>
+        {% for i in list %}
+            <li><a href="{% url 'votetest:choice' i.id %}">{{i.title}}</a></li>
+        {% empty %}
+            <li>没有投票项目</li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>
