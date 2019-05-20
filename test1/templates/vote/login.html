@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录</title>
+</head>
+<body>
+    <h1>注册登录</h1>
+    {{tip}}
+    <br>
+    <form action="{% url 'votetest:login' %}" method="post">
+        用户名：<input type="text" name="username" >
+        <br>
+        密码：<input type="text" name="pwd">
+        <br>
+        <input type="submit" value="注册" name="go">
+        <input type="submit" value="登录" name="go">
+    </form>
+</body>
+</html>

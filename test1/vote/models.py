@@ -14,3 +14,20 @@ class listcount(models.Model):
 
     def __str__(self):
         return self.choice
+
+class AreaInfo(models.Model):
+    diqu=models.CharField(max_length=30,verbose_name='地区')
+    bianhao=models.ForeignKey('self',null=True,blank=True,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.diqu
+
+
+class UserInfo(models.Model):
+    # unique 值不能重复
+    username=models.CharField(max_length=16,verbose_name='用户名',unique=True)
+    pwd=models.CharField(max_length=16,verbose_name='密码')
+    sign=models.CharField(max_length=10,choices=(('1','用户'),('2','管理员')),default=1,verbose_name='标识',null=True,blank=True)
+
+    def __str__(self):
+        return self.username

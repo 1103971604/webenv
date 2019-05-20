@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
+from django.http import HttpResponse
+from django.shortcuts import render
+
+def mainindex(request):
+    return render(request,'test1/index.html')
 
 
 urlpatterns = [
@@ -23,6 +28,7 @@ urlpatterns = [
     url('book/',include('book.urls',namespace='booktest')),
     # namespace 解除硬编码 作用
     url('vote/',include('vote.urls',namespace='votetest')),
+    url('',mainindex,name='index'),
 ]
 
 

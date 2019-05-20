@@ -6,14 +6,14 @@
 </head>
 <body>
     <h1>投票通道</h1>
-
+    当前用户:{{user.first}} <a href="{% url 'votetest:loginout' %}">注销用户</a>
     <ul>
-        {% for i in list %}
+        {% for i in listA %}
             <li><a href="{% url 'votetest:choice' i.id %}">{{i.title}}</a></li>
         {% empty %}
             <li>没有投票项目</li>
         {% endfor %}
-
     </ul>
+    <a href="{% url 'index' %}">主页</a>
 </body>
 </html>
