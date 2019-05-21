@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import list,listcount,AreaInfo,UserInfo
+from .models import list,listcount,AreaInfo ,UserInfo
 # Register your models here.
 
 class liststyle(admin.ModelAdmin):

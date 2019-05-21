@@ -6,7 +6,8 @@
 </head>
 <body>
     <h1>投票通道</h1>
-    当前用户:{{user.first}} <a href="{% url 'votetest:loginout' %}">注销用户</a>
+    <br>
+    当前用户:{{username}}<a href="{% url 'votetest:loginout' %}">注销用户</a>
     <ul>
         {% for i in listA %}
             <li><a href="{% url 'votetest:choice' i.id %}">{{i.title}}</a></li>

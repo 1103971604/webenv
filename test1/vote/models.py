@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class list(models.Model):
     title=models.CharField(max_length=50,verbose_name='标题')
@@ -25,9 +25,10 @@ class AreaInfo(models.Model):
 
 class UserInfo(models.Model):
     # unique 值不能重复
-    username=models.CharField(max_length=16,verbose_name='用户名',unique=True)
+    username=models.CharField(max_length=16,verbose_name='用户名')
     pwd=models.CharField(max_length=16,verbose_name='密码')
     sign=models.CharField(max_length=10,choices=(('1','用户'),('2','管理员')),default=1,verbose_name='标识',null=True,blank=True)
 
     def __str__(self):
         return self.username
+
