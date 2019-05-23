@@ -1,5 +1,5 @@
 from django import template
-from ..views import Category,Articles
+from ..views import Category,Articles,Pags
 
 register = template.Library()
 
@@ -8,7 +8,9 @@ register = template.Library()
 def low(a):
     return a.lower()
 
-
+@register.filter()
+def txtlen(val,num):
+    return val[:num]
 
 @register.simple_tag()
 def categorys():
@@ -23,3 +25,9 @@ def getnewcomments(num):
 @register.simple_tag()
 def getcategorys():
     return Category.objects.all()
+
+
+@register.simple_tag()
+def gettags():
+    return Pags.objects.all()
+

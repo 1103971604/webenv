@@ -1,6 +1,5 @@
-{% load func1 %}
-
 <!DOCTYPE html>
+<html lang="en">
 <html lang="en">
 <head>
 
@@ -22,7 +21,6 @@
     <script src="/static/js/modernizr.custom.js"></script>
 
 </head>
-
 <body>
 <div class="container">
     <header id="site-header">
@@ -45,7 +43,7 @@
                             <li class="cl-effect-11"><a href="{% url 'app1:index' %}" data-hover="首页">首页</a></li>
                             <li class="cl-effect-11"><a href="full-width.html" data-hover="博客">博客</a></li>
                             <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'app1:contact' %}" data-hover="联系">联系</a></li>
+                            <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
@@ -65,74 +63,14 @@
 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
 <div class="copyrights">Modified by <a href="http://zmrenwu.com/">追梦人物的博客</a></div>
 
-<div class="content-body">
-    <div class="container">
-        <div class="row">
-            <main class="col-md-8">
 
-                {% block left %}
 
-                {% endblock %}
 
-            </main>
-            <aside class="col-md-4">
-                {% block catalog %}
-                {% endblock %}
-                <div class="widget widget-recent-posts">
-                    <h3 class="widget-title">最新文章</h3>
-                    <ul>
 
-                        {% getnewcomments 3 as newcomment %}
+{% block cent%}
 
-                        {% for i in newcomment %}
-                            <li><a href="{% url 'app1:single' i.id %}">{{i.title}}</a></li>
-                        {% endfor %}
+{% endblock %}
 
-                    </ul>
-                </div>
-                <div class="widget widget-archives">
-                    <h3 class="widget-title">归档</h3>
-                    <ul>
-                        <li>
-                            <a href="#">2017 年 5 月</a>
-                        </li>
-                        <li>
-                            <a href="#">2017 年 4 月</a>
-                        </li>
-                        <li>
-                            <a href="#">2017 年 3 月</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="widget widget-category">
-                    <h3 class="widget-title">分类</h3>
-                    <ul>
-
-                        {% getcategorys as category %}
-                        {% for i in category %}
-                            <li><a href="{% url 'app1:selcategory' i.id %}">{{i.title}} ({{ i.articles_set.count }})</a></li>
-                        {% endfor %}
-
-                    </ul>
-                </div>
-
-                <div class="widget widget-tag-cloud">
-                    <h3 class="widget-title">标签云</h3>
-                    <ul>
-                        {% gettags as tags %}
-                        {%for i in tags %}
-                        <li><a href="{% url 'app1:seltag' i.id %}">{{i.title}}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="rss">
-                    <a href="{% url 'app1:rss'  %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
-                </div>
-            </aside>
-        </div>
-    </div>
-</div>
 <footer id="site-footer">
     <div class="container">
         <div class="row">
@@ -146,7 +84,8 @@
     </div>
 </footer>
 
-<!-- Mobile Menu -->
+
+
 <div class="overlay overlay-hugeinc">
     <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
     <nav>
@@ -160,7 +99,5 @@
 </div>
 
 <script src="/static/js/script.js"></script>
-
-
 </body>
 </html>

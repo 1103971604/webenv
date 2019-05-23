@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 # Create your models here.
 
 
@@ -45,6 +46,15 @@ class Articles(models.Model):
     def __str__(self):
         return self.title
 
+
+class Feedback(models.Model):
+    username=models.CharField(max_length=20,verbose_name='用户名')
+    emal=models.EmailField(blank=True,null=True,verbose_name='邮箱')
+    subject=models.CharField(max_length=30,verbose_name='主题')
+    txt=HTMLField()
+
+    def __str__(self):
+        return self.username
 
 
 
