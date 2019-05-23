@@ -81,15 +81,13 @@
                 <div class="widget widget-recent-posts">
                     <h3 class="widget-title">最新文章</h3>
                     <ul>
-                        <li>
-                            <a href="#">Django 博客开发入门教程：前言</a>
-                        </li>
-                        <li>
-                            <a href="#">Django 博客使用 Markdown 自动生成文章目录</a>
-                        </li>
-                        <li>
-                            <a href="#">部署 Django 博客</a>
-                        </li>
+
+                        {% getnewcomments 3 as newcomment %}
+
+                        {% for i in newcomment %}
+                            <li><a href="{% url 'app1:single' i.id %}">{{i.title}}</a></li>
+                        {% endfor %}
+
                     </ul>
                 </div>
                 <div class="widget widget-archives">
@@ -111,8 +109,8 @@
                     <h3 class="widget-title">分类</h3>
                     <ul>
 
-                        {% categorys as a %}
-                        {% for i in a %}
+                        {% getcategorys as category %}
+                        {% for i in category %}
                             <li>{{i.title}}</li>
                         {% endfor %}
 

@@ -20,7 +20,8 @@ def index(request):
 def single(request,id):
     article = Articles.objects.get(pk=id)
     Messiges=article.comment_set.all()
-    print(Messiges)
+    article.Readnum += 1
+    article.save()
     if request.method=='GET':
         # article.bodytxt=markdown.markdown(article.bodytxt,extensions=[
         #     "markdown.extensions.extra",
@@ -33,22 +34,12 @@ def single(request,id):
             "markdown.extensions.toc"
         ])
         article.bodytxt=mk.convert(article.bodytxt)
+
         article.toc=mk.toc
 
-        # article.Readnum+=1
-        # article.save()
+        print(article.bodytxt)
+
         return render(request,'single.html',locals())
-    else:
-        name=request.POST.get('name')
-        email = request.POST.get('email')
-        url = request.POST.get('url')
-        comment = request.POST.get('comment')
-        Messige=Comment()
-        Messige.username=name
-        Messige.email=email
-        Messige.url=url
-        Messige.tex=comment
-        Messige.title=article
-        Messige.save()
-        # return HttpResponseRedirect('/app1/single/%s/'%(article.id,))
-        return redirect(reverse('app1:single'))
+
+
+        # return redirect(reverse('app1:single'))

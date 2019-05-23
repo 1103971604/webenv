@@ -14,7 +14,12 @@ def low(a):
 def categorys():
     return Category.objects.all()
 
+
 @register.simple_tag()
-def Messiges(id):
-    article=Articles.objects.get(pk=id)
-    return article.comment_set.all()
+def getnewcomments(num):
+    return Articles.objects.all().order_by('-create_time')[:num]
+
+
+@register.simple_tag()
+def getcategorys():
+    return Category.objects.all()
