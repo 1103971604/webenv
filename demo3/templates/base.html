@@ -110,11 +110,14 @@
                     <ul>
 
                         {% getcategorys as category %}
+
                         {% for i in category %}
                             <li><a href="{% url 'app1:selcategory' i.id %}">{{i.title}} ({{ i.articles_set.count }})</a></li>
                         {% endfor %}
 
+
                     </ul>
+
                 </div>
 
                 <div class="widget widget-tag-cloud">

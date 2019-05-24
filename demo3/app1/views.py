@@ -6,6 +6,16 @@ from app2.models import Comment
 from django.shortcuts import render,redirect,reverse
 # Create your views here.
 import markdown
+
+
+from django.core.mail import send_mail,send_mass_mail
+from django.conf import settings
+
+
+
+
+
+
 def index(request):
 
     num=request.GET.get('page')
@@ -65,14 +75,24 @@ def contact(request):
     if request.method=='GET':
         return render(request,'contact.html')
     elif request.method=='POST':
-        print('tijiao')
-        feedbook=Feedback()
-        feedbook.username=request.POST.get('name')
-        feedbook.emal=request.POST.get('email')
-        feedbook.subject=request.POST.get('subject')
-        feedbook.txt=request.POST.get('message')
-        feedbook.save()
-        return redirect(reverse('app1:index'))
+
+        try:
+
+            feedbook = Feedback()
+            feedbook.username = request.POST.get('name')
+            feedbook.emal = request.POST.get('email')
+            feedbook.subject = request.POST.get('subject')
+            feedbook.txt = request.POST.get('message')
+            # feedbook.save()   settings.DEFAULT_FROM_EMAIL
+            send_mail(str(request.POST.get('subject')),request.POST.get('message'),str(request.POST.get('name')),['1103971604@qq.com'])
+            print('发送成功')
+            return redirect(reverse('app1:contact'))
+        except Exception as e:
+            print('发送失败')
+            return redirect(reverse('app1:contact'))
+
+
+
     else:
         return HttpResponse('错误')
 

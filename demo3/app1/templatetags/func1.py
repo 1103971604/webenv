@@ -1,6 +1,5 @@
 from django import template
 from ..views import Category,Articles,Pags
-
 register = template.Library()
 
 
@@ -8,10 +7,11 @@ register = template.Library()
 def low(a):
     return a.lower()
 
+# 筛选器
 @register.filter()
 def txtlen(val,num):
     return val[:num]
-
+# 标签
 @register.simple_tag()
 def categorys():
     return Category.objects.all()
