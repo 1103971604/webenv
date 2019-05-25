@@ -12,6 +12,7 @@ urlpatterns=[
     url(r'^login/$', Login, name='login'),
     url(r'^register/$',Register,name='register'),
     url(r'^active/(\d+)/$',active,name='active'),
+    url(r'^verifycode/$',verifycode,name='verifycode'),
 ]
 
 
