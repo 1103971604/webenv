@@ -11,6 +11,6 @@ urlpatterns=[
     url(r'^seltag/(\d+)/$',views.seltag,name='seltag'),
     url(r'^rss/$',feed.App1Feed(),name='rss'),
     url(r'^contact/$',views.contact,name='contact'),
-
+    url(r'^addimg/$',views.addimg,name='addimg'),
 
 ]

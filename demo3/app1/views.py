@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
-from .models import Articles,Category,Pags,Feedback
+from .models import Articles,Category,Pags,Feedback,absimg
 from django.core.paginator import Paginator
 from app2.models import Comment
 from django.shortcuts import render,redirect,reverse
@@ -17,7 +17,6 @@ from django.conf import settings
 
 
 def index(request):
-
     num=request.GET.get('page')
     print(num)
     if num== None:
@@ -56,7 +55,6 @@ def single(request,id):
 
 
 def selategory(request,id):
-
     articles=Category.objects.get(pk=id).articles_set.all()
     paginator = Paginator(articles, 2)
     page = paginator.get_page(1)
@@ -75,9 +73,7 @@ def contact(request):
     if request.method=='GET':
         return render(request,'contact.html')
     elif request.method=='POST':
-
         try:
-
             feedbook = Feedback()
             feedbook.username = request.POST.get('name')
             feedbook.emal = request.POST.get('email')
@@ -95,5 +91,13 @@ def contact(request):
         return HttpResponse('错误')
 
 
-
+def addimg(request):
+    if request.method=='GET':
+        return render(request,'addimg.html')
+    else:
+        a=absimg()
+        a.img=request.FILES.get('img')
+        a.msg=request.POST.get('msg')
+        a.save()
+        return redirect(reverse('app1:index'))
 

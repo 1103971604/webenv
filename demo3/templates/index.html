@@ -6,6 +6,9 @@
 
 {% block left %}
 
+    <a href="{% url 'app1:addimg' %}">添加图片</a>
+
+
     {% getimgs as imgs %}
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -40,6 +43,7 @@
     </div>
         {% endif %}
       {% endfor %}
+
   </div>
 
 
