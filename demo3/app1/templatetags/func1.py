@@ -1,5 +1,5 @@
 from django import template
-from ..views import Category,Articles,Pags
+from ..models import Category,Articles,Pags,absimg
 register = template.Library()
 
 
@@ -31,3 +31,8 @@ def getcategorys():
 def gettags():
     return Pags.objects.all()
 
+
+# 查询所有图片标签
+@register.simple_tag()
+def getimgs():
+    return absimg.objects.all()

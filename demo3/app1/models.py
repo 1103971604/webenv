@@ -56,6 +56,16 @@ class Feedback(models.Model):
     def __str__(self):
         return self.username
 
+class absimg(models.Model):
+    img=models.ImageField(upload_to='abs',verbose_name='图片文件')
+    msg=models.CharField(max_length=20,verbose_name='消息')
+    class Meta():
+        verbose_name = "轮播"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.msg
+
 
 
 

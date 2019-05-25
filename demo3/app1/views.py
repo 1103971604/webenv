@@ -84,14 +84,12 @@ def contact(request):
             feedbook.subject = request.POST.get('subject')
             feedbook.txt = request.POST.get('message')
             # feedbook.save()   settings.DEFAULT_FROM_EMAIL
-            send_mail(str(request.POST.get('subject')),request.POST.get('message'),str(request.POST.get('name')),['1103971604@qq.com'])
+            send_mail(str(request.POST.get('subject')),request.POST.get('message'),settings.DEFAULT_FROM_EMAIL,['1103971604@qq.com'])
             print('发送成功')
             return redirect(reverse('app1:contact'))
         except Exception as e:
             print('发送失败')
             return redirect(reverse('app1:contact'))
-
-
 
     else:
         return HttpResponse('错误')

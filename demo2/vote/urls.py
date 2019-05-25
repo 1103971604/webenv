@@ -11,6 +11,7 @@ urlpatterns=[
     url(r'^loginout/$',loginout,name='loginout'),
     url(r'^login/$', Login, name='login'),
     url(r'^register/$',Register,name='register'),
+    url(r'^active/(\d+)/$',active,name='active'),
 ]
 
 
