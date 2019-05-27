@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '34lm2zzu2u^6e1d8dckm+p7)ks1$-j8!r&&)1i*c8_!!8-motq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app1',
     'app2',
     'tinymce',
+    'haystack',
 
 ]
 
@@ -144,3 +145,17 @@ EMAIL_HOST_PASSWORD = 'qikuedu'
 DEFAULT_FROM_EMAIL = 'zzy0371 <18137128152@163.com>'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,"static/media")
+
+
+HAYSTACK_CONNECTIONS = {
+'default': {
+'ENGINE': 'app1.whoosh_cn_backend.WhooshEngine',
+'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+}
+}
+
+
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

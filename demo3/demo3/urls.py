@@ -19,5 +19,6 @@ from django.conf.urls import  url,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('app1/',include('app1.urls',namespace='app1')),
-    url('app2/',include('app2.urls',namespace='app2'))
+    url('app2/',include('app2.urls',namespace='app2')),
+    url(r'^search/', include('haystack.urls')),
 ]

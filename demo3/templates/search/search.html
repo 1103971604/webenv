@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+</head>
+<body>
+    搜索内容:{{query}}
+
+    {% if query %}
+        {% for i in page.object_list %}
+            <li><a href="{% url 'app1:single' i.object.id %}">{{i.object.title}}</a></li>
+        {% empty %}
+            <li>没有内容</li>
+        {% endfor %}
+
+    {% endif %}
+
+
+</body>
+</html>
